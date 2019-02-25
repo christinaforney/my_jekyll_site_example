@@ -16,7 +16,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - rubygems-v1-{\{ checksum "Gemfile.lock" }} # ACTION: remove the backslash between the curlies
+            - rubygems-v1-{{ checksum "Gemfile.lock" }}
             - rubygems-v1-fallback
       - run:
           name: Install Bundler
@@ -25,7 +25,7 @@ jobs:
           name: Bundle Install
           command: bundle check || bundle install
       - save_cache:
-          key: rubygems-v1-{\{ checksum "Gemfile.lock" }} # ACTION: remove the backslash between the curlies
+          key: rubygems-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run:
